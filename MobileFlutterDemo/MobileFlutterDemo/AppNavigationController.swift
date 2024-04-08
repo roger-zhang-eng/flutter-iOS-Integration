@@ -14,7 +14,8 @@ class AppNavigationController: UINavigationController {
     }
     
     func pushFlutterScreen() {
-        let displayVC = FlutterManager.shared.entryScreen()
+        //let displayVC = FlutterManager.shared.entryScreen()
+        let displayVC = FlutterManager.shared.secondScreen()
         
         //pushViewController(displayVC, animated: true)
         

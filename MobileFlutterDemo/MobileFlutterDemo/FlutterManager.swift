@@ -14,7 +14,7 @@ final class FlutterManager {
 
     static let shared = FlutterManager()
     
-    lazy var flutterEngine = FlutterEngine(name: "my flutter engine")
+    private var engines: FlutterEngineGroup!
     
     private var isInitialised = false
     
@@ -25,20 +25,21 @@ final class FlutterManager {
             return
         }
         
-        flutterEngine.run()
-        GeneratedPluginRegistrant.register(with: flutterEngine)
+        engines = FlutterEngineGroup(name: "multiple-flutters", project: nil)
         
         isInitialised = true
     }
     
     func entryScreen() -> UIViewController {
-        FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
+        
+        FlutterViewController(engine: engines.makeEngine(with: nil), nibName: nil, bundle: nil)
     }
     
     func secondScreen() -> UIViewController {
-        let bankListVC = FlutterViewController(engine: flutterEngine, nibName: "BankListPage", bundle: nil)
+        let secondScreenEngine = engines.makeEngine(withEntrypoint: "secondary", libraryURI: nil)
+        let secondVC = FlutterViewController(engine: secondScreenEngine, nibName: nil, bundle: nil)
         
-        return bankListVC
+        return secondVC
     }
 
 }
