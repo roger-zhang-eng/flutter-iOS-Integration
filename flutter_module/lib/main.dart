@@ -18,36 +18,6 @@ void main() {
 
 @pragma('vm:entry-point')
 void secondary() => runApp(const MySecondAppScreen());
-/*
-void secondary() {
-  runApp(
-    MaterialApp(
-      title: 'Second Screen Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: const SecondScreen(),
-    ),
-  );
-}
-*/
-
-/*
-class MySecondAppScreen extends StatelessWidget {
-    const MySecondAppScreen({Key? key}) : super(key: key);
-    
-    @override
-    Widget build(BuildContext context) {
-        return MaterialApp(
-            title: 'Second Screen Demo',
-            theme: ThemeData(
-                primarySwatch: Colors.green,
-            ),
-            
-            home: const SecondScreen(),
-        );
-    }
-}*/
 
 class MySecondAppScreen extends StatelessWidget {
   const MySecondAppScreen({Key? key}) : super(key: key);
@@ -79,11 +49,11 @@ class _MySecondaryHomePageState extends State<MySecondaryHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
+            Text(
               'New layout screen!',
             ),
           ],
