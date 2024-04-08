@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Screens/route_screens.dart';
+import 'package:flutter/services.dart';
 
 //void main() => runApp(const MyApp());
 
@@ -43,18 +44,41 @@ class MySecondaryHomePage extends StatefulWidget {
 }
 
 class _MySecondaryHomePageState extends State<MySecondaryHomePage> {
+  final MethodChannel platformChannel = const MethodChannel('app-channel');
+
+  String _updatedText = 'Flutter Screen!';
+
+  void fetchDataFromNative() async {
+    try {
+      final String result = await platformChannel.invokeMethod('getDataFromNative');
+      print('\nResult from Native: $result');
+      _updatedText = result;
+      setState(() {});
+    } on PlatformException catch (e) {
+      print('\nError: ${e.message}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'New layout screen!',
+            Text(_updatedText),
+
+            Padding(padding: EdgeInsets.all(8.0)),
+
+            ElevatedButton(
+                onPressed: () {
+                  print('Fetch native data');
+                  fetchDataFromNative();
+                },
+                child: Text('Fetch native data')
             ),
           ],
         ),

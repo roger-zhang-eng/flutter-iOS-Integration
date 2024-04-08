@@ -17,6 +17,7 @@ final class FlutterManager {
     private var engines: FlutterEngineGroup!
     
     private var isInitialised = false
+	private let channel = "app-channel"
     
     private init () {}
     
@@ -38,8 +39,27 @@ final class FlutterManager {
     func secondScreen() -> UIViewController {
         let secondScreenEngine = engines.makeEngine(withEntrypoint: "secondary", libraryURI: nil)
         let secondVC = FlutterViewController(engine: secondScreenEngine, nibName: nil, bundle: nil)
+		let methodChannel = FlutterMethodChannel(name: channel, binaryMessenger: secondVC.binaryMessenger)
+		
+		methodChannel.setMethodCallHandler { [unowned self] (call: FlutterMethodCall, result: FlutterResult) in
+			if call.method == "getDataFromNative" {
+				let data = self.getDataFromNative()
+				result(data)
+			} else {
+				result(FlutterMethodNotImplemented)
+			}
+		}
         
         return secondVC
     }
 
+}
+
+private extension FlutterManager {
+	
+	// Pass data from native to flutter screen
+	func getDataFromNative() -> String {
+		return "Data from Native"
+	}
+	
 }
