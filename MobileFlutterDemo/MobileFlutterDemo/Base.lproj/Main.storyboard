@@ -36,6 +36,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="h0c-8m-sqp">
+                        <barButtonItem key="leftBarButtonItem" title="Native" id="yjJ-MI-i4S">
+                            <connections>
+                                <action selector="nativeButtonTapped:" destination="BYZ-38-t0r" id="Scd-tb-B8r"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Flutter" id="hAs-2W-Olq">
                             <connections>
                                 <action selector="flutterButtonTapped:" destination="BYZ-38-t0r" id="qe4-M2-7P3"/>
@@ -47,6 +52,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="959.5419847328244" y="-2.1126760563380285"/>
+        </scene>
+        <!--Second Screen View Controller-->
+        <scene sceneID="SSn-yw-1sg">
+            <objects>
+                <viewController storyboardIdentifier="NativeSecondScreen" id="Hkt-vq-h0q" customClass="SecondScreenViewController" customModule="MobileFlutterDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QRy-Fq-rke">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Second Native Screen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLf-vt-N6c">
+                                <rect key="frame" x="66.666666666666686" y="119" width="260" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="4tr-Z4-FSm"/>
+                                    <constraint firstAttribute="height" constant="32" id="n3e-a2-jyS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4N-hB-ctm">
+                                <rect key="frame" x="156.66666666666666" y="184" width="80" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Cm8-yx-g2T"/>
+                                    <constraint firstAttribute="height" constant="32" id="b7f-qA-yzi"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="Hkt-vq-h0q" eventType="touchUpInside" id="2ix-qP-XHc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4A6-d3-zlT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uLf-vt-N6c" firstAttribute="centerX" secondItem="QRy-Fq-rke" secondAttribute="centerX" id="8Xy-WN-hyA"/>
+                            <constraint firstItem="Y4N-hB-ctm" firstAttribute="centerX" secondItem="QRy-Fq-rke" secondAttribute="centerX" id="9zc-12-ziz"/>
+                            <constraint firstItem="uLf-vt-N6c" firstAttribute="top" secondItem="4A6-d3-zlT" secondAttribute="top" constant="16" id="iQ9-ab-fhd"/>
+                            <constraint firstItem="Y4N-hB-ctm" firstAttribute="top" secondItem="uLf-vt-N6c" secondAttribute="bottom" constant="33" id="saA-EH-3ET"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bao-y9-giB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="960" y="675"/>
         </scene>
         <!--App Navigation Controller-->
         <scene sceneID="sXe-tW-1FF">

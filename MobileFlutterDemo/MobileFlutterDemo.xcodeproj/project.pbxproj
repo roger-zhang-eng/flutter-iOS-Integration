@@ -21,6 +21,8 @@
 		E96447AC2BC3A6AB0037E15C /* MobileFlutterDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96447AB2BC3A6AB0037E15C /* MobileFlutterDemoUITestsLaunchTests.swift */; };
 		E96447B92BC3A8720037E15C /* FlutterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96447B82BC3A8720037E15C /* FlutterManager.swift */; };
 		E96447BB2BC3B46A0037E15C /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96447BA2BC3B46A0037E15C /* AppNavigationController.swift */; };
+		E9DB0EBE2BC4D58C0001DDFB /* SecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB0EBD2BC4D58C0001DDFB /* SecondScreenViewController.swift */; };
+		E9DB0EBF2BC4D58C0001DDFB /* SecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB0EBD2BC4D58C0001DDFB /* SecondScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,7 @@
 		E96447AB2BC3A6AB0037E15C /* MobileFlutterDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileFlutterDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E96447B82BC3A8720037E15C /* FlutterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterManager.swift; sourceTree = "<group>"; };
 		E96447BA2BC3B46A0037E15C /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
+		E9DB0EBD2BC4D58C0001DDFB /* SecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +139,7 @@
 				E96447882BC3A6A90037E15C /* AppDelegate.swift */,
 				E964478A2BC3A6A90037E15C /* SceneDelegate.swift */,
 				E964478C2BC3A6A90037E15C /* ViewController.swift */,
+				E9DB0EBD2BC4D58C0001DDFB /* SecondScreenViewController.swift */,
 				E96447BA2BC3B46A0037E15C /* AppNavigationController.swift */,
 				E96447B82BC3A8720037E15C /* FlutterManager.swift */,
 				E964478E2BC3A6A90037E15C /* Main.storyboard */,
@@ -398,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9DB0EBE2BC4D58C0001DDFB /* SecondScreenViewController.swift in Sources */,
 				E96447B92BC3A8720037E15C /* FlutterManager.swift in Sources */,
 				E964478D2BC3A6A90037E15C /* ViewController.swift in Sources */,
 				E96447892BC3A6A90037E15C /* AppDelegate.swift in Sources */,
@@ -410,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9DB0EBF2BC4D58C0001DDFB /* SecondScreenViewController.swift in Sources */,
 				E96447A02BC3A6AA0037E15C /* MobileFlutterDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

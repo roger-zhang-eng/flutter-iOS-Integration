@@ -11,8 +11,10 @@ import FlutterPluginRegistrant
 import UIKit
 
 final class FlutterManager {
-
+    
     static let shared = FlutterManager()
+    
+    var dismissFlutterCallback: (() -> Void)?
     
     private var engines: FlutterEngineGroup!
     
@@ -43,13 +45,16 @@ final class FlutterManager {
 		
 		methodChannel.setMethodCallHandler { [unowned self] (call: FlutterMethodCall, result: FlutterResult) in
 			if call.method == "getDataFromNative" {
-				let data = self.getDataFromNative()
+				let data = getDataFromNative()
 				result(data)
-			} else {
+            } else if call.method == "dismissScreen" {
+                dismissScreen()
+                result("Dismiss Success")
+            } else {
 				result(FlutterMethodNotImplemented)
 			}
 		}
-        
+                
         return secondVC
     }
 
@@ -61,5 +66,9 @@ private extension FlutterManager {
 	func getDataFromNative() -> String {
 		return "Data from Native"
 	}
+    
+    func dismissScreen() {
+        dismissFlutterCallback?()
+    }
 	
 }
