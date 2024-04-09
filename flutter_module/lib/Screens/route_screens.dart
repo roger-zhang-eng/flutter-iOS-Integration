@@ -34,13 +34,10 @@ class SecondScreen extends StatefulWidget {
   final bool isRouted;
 
   @override
-  State<SecondScreen> createState() => _SecondScreen(isRouted);
+  State<SecondScreen> createState() => _SecondScreen();
 }
 
 class _SecondScreen extends State<SecondScreen> {
-  _SecondScreen(this._isRouted);
-
-  final bool _isRouted;
   final MethodChannel _platformChannel = const MethodChannel('app-channel');
 
   String _updatedText = 'Flutter Second Screen!';
@@ -58,7 +55,7 @@ class _SecondScreen extends State<SecondScreen> {
   }
 
   void dismissScreen(BuildContext context) async {
-    if (_isRouted) {
+    if (widget.isRouted) {
       Navigator.pop(context);
     } else {
       final String result =
@@ -82,7 +79,7 @@ class _SecondScreen extends State<SecondScreen> {
         print('Fetch button is tapped! \n');
         fetchDataFromNative();
       },
-      child: Text('Fetch native data'),
+      child: const Text('Fetch native data'),
     );
 
     ElevatedButton backButton = ElevatedButton(
@@ -92,7 +89,7 @@ class _SecondScreen extends State<SecondScreen> {
       child: const Text('Go back!'),
     );
 
-    Padding padding = Padding(padding: EdgeInsets.all(8.0));
+    Padding padding = const Padding(padding: EdgeInsets.all(8.0));
 
     return Scaffold(
       appBar: AppBar(
@@ -104,7 +101,7 @@ class _SecondScreen extends State<SecondScreen> {
           children: <Widget>[
             Text(_updatedText),
             const Padding(padding: EdgeInsets.all(8.0)),
-            _isRouted ? padding : fetchButton,
+            widget.isRouted ? padding : fetchButton,
             padding,
             backButton,
           ],
