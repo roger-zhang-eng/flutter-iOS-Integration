@@ -190,6 +190,7 @@
 				E96447822BC3A6A90037E15C /* Frameworks */,
 				E96447832BC3A6A90037E15C /* Resources */,
 				4F1EA6B1691C2BED2327F2A5 /* [CP-User] Embed Flutter Build flutter_module Script */,
+				C17C33B1B3E644BDF06D47CB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -227,6 +228,7 @@
 				E96447A12BC3A6AB0037E15C /* Sources */,
 				E96447A22BC3A6AB0037E15C /* Frameworks */,
 				E96447A32BC3A6AB0037E15C /* Resources */,
+				4CB67C820720D3C1DEAC4AF4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -309,6 +311,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4CB67C820720D3C1DEAC4AF4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MobileFlutterDemo-MobileFlutterDemoUITests/Pods-MobileFlutterDemo-MobileFlutterDemoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MobileFlutterDemo-MobileFlutterDemoUITests/Pods-MobileFlutterDemo-MobileFlutterDemoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MobileFlutterDemo-MobileFlutterDemoUITests/Pods-MobileFlutterDemo-MobileFlutterDemoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4F1EA6B1691C2BED2327F2A5 /* [CP-User] Embed Flutter Build flutter_module Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -361,6 +380,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C17C33B1B3E644BDF06D47CB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MobileFlutterDemo/Pods-MobileFlutterDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MobileFlutterDemo/Pods-MobileFlutterDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MobileFlutterDemo/Pods-MobileFlutterDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E3C0D48DCA6351E9433ECC11 /* [CP-User] Run Flutter Build flutter_module Script */ = {

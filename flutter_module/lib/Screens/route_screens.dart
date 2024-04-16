@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mybatteryplugin/mybatteryplugin.dart';
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({super.key});
@@ -39,8 +40,10 @@ class SecondScreen extends StatefulWidget {
 
 class _SecondScreen extends State<SecondScreen> {
   final MethodChannel _platformChannel = const MethodChannel('app-channel');
+  final Mybatteryplugin _batteryPlugin = Mybatteryplugin();
 
   String _updatedText = 'Flutter Second Screen!';
+  String _batteryLevel = 'Check Battery - Unknown level.';
 
   void fetchDataFromNative() async {
     try {
@@ -66,6 +69,14 @@ class _SecondScreen extends State<SecondScreen> {
     }
   }
 
+  void getBatteryLevel() async {
+    final batteryLevel = await _batteryPlugin.getBatteryLevel();
+    print('Battery Level: $batteryLevel');
+    setState(() {
+      _batteryLevel = 'Check Battery - $batteryLevel%';
+    });
+  }
+
   @override
   void dispose() {
     print('Second Screen is disposed! \n');
@@ -82,14 +93,27 @@ class _SecondScreen extends State<SecondScreen> {
       child: const Text('Fetch native data'),
     );
 
-    ElevatedButton backButton = ElevatedButton(
-      onPressed: () {
-        dismissScreen(context);
-      },
-      child: const Text('Go back!'),
+    Padding backButton = Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: () {
+          dismissScreen(context);
+        },
+        child: const Text('Go back!'),
+      ),
     );
 
     Padding padding = const Padding(padding: EdgeInsets.all(8.0));
+
+    Padding checkBatteryButton = Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: () {
+          getBatteryLevel();
+        },
+        child: Text(_batteryLevel),
+      ),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -103,6 +127,7 @@ class _SecondScreen extends State<SecondScreen> {
             const Padding(padding: EdgeInsets.all(8.0)),
             widget.isRouted ? padding : fetchButton,
             padding,
+            checkBatteryButton,
             backButton,
           ],
         ),

@@ -20,6 +20,7 @@ final class FlutterManager {
     
     private var isInitialised = false
 	private let channel = "app-channel"
+	lazy private var flutterEngine = engines.makeEngine(withEntrypoint: "secondary", libraryURI: nil)
     
     private init () {}
     
@@ -29,7 +30,10 @@ final class FlutterManager {
         }
         
         engines = FlutterEngineGroup(name: "multiple-flutters", project: nil)
-        
+		
+		flutterEngine.run()
+		GeneratedPluginRegistrant.register(with: flutterEngine)
+		
         isInitialised = true
     }
     
@@ -39,9 +43,9 @@ final class FlutterManager {
     }
     
     func secondScreen() -> UIViewController {
-        let secondScreenEngine = engines.makeEngine(withEntrypoint: "secondary", libraryURI: nil)
-        let secondVC = FlutterViewController(engine: secondScreenEngine, nibName: nil, bundle: nil)
-		let methodChannel = FlutterMethodChannel(name: channel, binaryMessenger: secondVC.binaryMessenger)
+        //let secondScreenEngine = engines.makeEngine(withEntrypoint: "secondary", libraryURI: nil)
+        let secondVC = FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
+		let methodChannel = FlutterMethodChannel(name: channel, binaryMessenger: flutterEngine.binaryMessenger)
 		
 		methodChannel.setMethodCallHandler { [unowned self] (call: FlutterMethodCall, result: FlutterResult) in
 			if call.method == "getDataFromNative" {
