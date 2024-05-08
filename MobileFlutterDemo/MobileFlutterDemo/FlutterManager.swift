@@ -9,6 +9,7 @@ import Foundation
 import Flutter
 import FlutterPluginRegistrant
 import UIKit
+import mybatteryplugin
 
 final class FlutterManager {
     
