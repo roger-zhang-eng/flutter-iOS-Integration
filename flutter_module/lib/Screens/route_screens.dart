@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_module/Screens/thirdScreen.dart';
 import 'package:mybatteryplugin/mybatteryplugin.dart';
+import 'dart:convert';
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({super.key});
@@ -44,6 +46,7 @@ class _SecondScreen extends State<SecondScreen> {
 
   String _updatedText = 'Flutter Second Screen!';
   String _batteryLevel = 'Check Battery - Unknown level.';
+  String _authToken = 'dummy-auth-token';
 
   void fetchDataFromNative() async {
     try {
@@ -74,6 +77,16 @@ class _SecondScreen extends State<SecondScreen> {
     print('Battery Level: $batteryLevel');
     setState(() {
       _batteryLevel = 'Check Battery - $batteryLevel%';
+    });
+  }
+
+  void getAuthToken() async {
+    final jsonString = await _batteryPlugin.getPlatformVersion();
+    final tokenData = jsonDecode(jsonString!);
+    print('token: $tokenData');
+    final token = tokenData['authToken'];
+    setState(() {
+      _authToken = 'From native token - $token';
     });
   }
 
@@ -115,6 +128,26 @@ class _SecondScreen extends State<SecondScreen> {
       ),
     );
 
+    Padding checkTokenButton = Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: () {
+          getAuthToken();
+        },
+        child: Text(_authToken),
+      ),
+    );
+
+    Padding pushNextScreenButton = Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: () {
+          _navigateToNextScreen(context);
+        },
+        child: const Text('Push the 3rd Screen'),
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -129,9 +162,15 @@ class _SecondScreen extends State<SecondScreen> {
             padding,
             checkBatteryButton,
             backButton,
+            checkTokenButton,
+            widget.isRouted ? padding : pushNextScreenButton,
           ],
         ),
       ),
     );
+  }
+
+  void _navigateToNextScreen(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ThirdScreen()));
   }
 }

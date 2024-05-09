@@ -10,6 +10,7 @@
 		5DAE31880964888B96C09728 /* Pods_MobileFlutterDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBDCDA39199D0D6AB5C121F /* Pods_MobileFlutterDemo.framework */; };
 		A42B06F2E3592DD344320DA0 /* Pods_MobileFlutterDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A63461CB2CE5C46ACDDCF6B /* Pods_MobileFlutterDemoTests.framework */; };
 		C8C8E4C1EDC997C388297BA7 /* Pods_MobileFlutterDemo_MobileFlutterDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CB5C723BA10F8FE527D17FF /* Pods_MobileFlutterDemo_MobileFlutterDemoUITests.framework */; };
+		E5F442212BECA4B70031B57B /* FlutterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F442202BECA4B70031B57B /* FlutterData.swift */; };
 		E96447892BC3A6A90037E15C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96447882BC3A6A90037E15C /* AppDelegate.swift */; };
 		E964478B2BC3A6A90037E15C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E964478A2BC3A6A90037E15C /* SceneDelegate.swift */; };
 		E964478D2BC3A6A90037E15C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E964478C2BC3A6A90037E15C /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 		B9DCE7278575112C7C6F1566 /* Pods-MobileFlutterDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileFlutterDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-MobileFlutterDemoTests/Pods-MobileFlutterDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA7B0DC485C14C4F2FE42AF9 /* Pods-MobileFlutterDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileFlutterDemo.debug.xcconfig"; path = "Target Support Files/Pods-MobileFlutterDemo/Pods-MobileFlutterDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		DADEF0E92888CD2A183B781A /* Pods-MobileFlutterDemo-MobileFlutterDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileFlutterDemo-MobileFlutterDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-MobileFlutterDemo-MobileFlutterDemoUITests/Pods-MobileFlutterDemo-MobileFlutterDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E5F442202BECA4B70031B57B /* FlutterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterData.swift; sourceTree = "<group>"; };
 		E800EEB38F9872D63256B512 /* Pods-MobileFlutterDemo-MobileFlutterDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileFlutterDemo-MobileFlutterDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-MobileFlutterDemo-MobileFlutterDemoUITests/Pods-MobileFlutterDemo-MobileFlutterDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E96447852BC3A6A90037E15C /* MobileFlutterDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileFlutterDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96447882BC3A6A90037E15C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				E964478C2BC3A6A90037E15C /* ViewController.swift */,
 				E9DB0EBD2BC4D58C0001DDFB /* SecondScreenViewController.swift */,
 				E96447BA2BC3B46A0037E15C /* AppNavigationController.swift */,
+				E5F442202BECA4B70031B57B /* FlutterData.swift */,
 				E96447B82BC3A8720037E15C /* FlutterManager.swift */,
 				E964478E2BC3A6A90037E15C /* Main.storyboard */,
 				E96447912BC3A6AA0037E15C /* Assets.xcassets */,
@@ -442,6 +445,7 @@
 				E96447B92BC3A8720037E15C /* FlutterManager.swift in Sources */,
 				E964478D2BC3A6A90037E15C /* ViewController.swift in Sources */,
 				E96447892BC3A6A90037E15C /* AppDelegate.swift in Sources */,
+				E5F442212BECA4B70031B57B /* FlutterData.swift in Sources */,
 				E964478B2BC3A6A90037E15C /* SceneDelegate.swift in Sources */,
 				E96447BB2BC3B46A0037E15C /* AppNavigationController.swift in Sources */,
 			);
