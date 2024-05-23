@@ -9,13 +9,14 @@ import Foundation
 import Flutter
 import FlutterPluginRegistrant
 import UIKit
+import mybatteryplugin
 
 final class FlutterManager {
     
     static let shared = FlutterManager()
     
     var dismissFlutterCallback: (() -> Void)?
-    
+    private var tokenID = 0
     private var engines: FlutterEngineGroup!
     
     private var isInitialised = false
@@ -33,6 +34,7 @@ final class FlutterManager {
 		
 		flutterEngine.run()
 		GeneratedPluginRegistrant.register(with: flutterEngine)
+		MybatterypluginPlugin.shared.methodChannelHandler = methodChannelHandler
 		
         isInitialised = true
     }
@@ -74,5 +76,17 @@ private extension FlutterManager {
     func dismissScreen() {
         dismissFlutterCallback?()
     }
+	
+	func methodChannelHandler(_ request: MybatterypluginPlugin.BPMethodChannelRequest) -> MybatterypluginPlugin.BPMethodChannelResult {
+		switch request {
+		case .auth:
+			print("Native methodChannelHandler: get auth request")
+			tokenID += 1
+			let token = FlutterAuthToken(authToken: "native-\(tokenID)")
+			return .jsonData(token.jsonString() ?? "")
+		default:
+			return .void
+		}
+	}
 	
 }
