@@ -1,25 +1,95 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mybatteryplugin/mybatteryplugin.dart';
+import '../Module/route_observer.dart';
+import 'bottom_sheet.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart' as MBS;
 
-class FirstScreen extends StatelessWidget {
+class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
+
+  @override
+  State<FirstScreen> createState() => _FirstScreen();
+}
+
+class _FirstScreen extends State<FirstScreen> with RouteAware {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    routeObserver.subscribe(this, ModalRoute.of(context)!);
+  }
+
+  @override
+  void dispose() {
+    routeObserver.unsubscribe(this);
+    super.dispose();
+  }
+
+  @override
+  void didPush() {
+    // Route was pushed onto navigator and is now the topmost route.
+    print('RZ: didPush');
+  }
+
+  @override
+  void didPushNext() {
+    print("RZ: didPushNext");
+    super.didPushNext();
+  }
+
+  @override
+  void didPopNext() {
+    // Covering route was popped off the navigator.
+    print('RZ: didPopNext');
+  }
+
+  @override
+  void didPop() {
+    print("RZ: didPop");
+    super.didPop();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('First Screen'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigate to the second screen when tapped.
-            Navigator.pushNamed(context, '/second');
-          },
-          child: const Text('Launch screen'),
+        appBar: AppBar(
+          title: const Text('First Screen'),
         ),
+        body: Center(
+            // ignore: avoid_unnecessary_containers
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(height: 32.0),
+            const Text('First Screen'),
+            const SizedBox(height: 32.0),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to the second screen when tapped.
+                Navigator.pushNamed(context, '/second');
+              },
+              child: const Text('Launch screen'),
+            ),
+            const SizedBox(height: 32.0),
+            ElevatedButton(
+              onPressed: () {
+                openBottomSheet(context, false);
+              },
+              child: const Text('Modal Bottom Sheet'),
+            ),
+            const SizedBox(height: 32.0),
+          ],
+        )));
+  }
+
+  void openBottomSheet(BuildContext context, bool enableDraggable) {
+    MBS.showMaterialModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
+      context: context,
+      builder: (context) => const MyBottomSheet(),
+      enableDrag: enableDraggable,
     );
   }
 }
@@ -79,7 +149,7 @@ class _SecondScreen extends State<SecondScreen> {
 
   @override
   void dispose() {
-    print('Second Screen is disposed! \n');
+    //print('Second Screen is disposed! \n');
     super.dispose();
   }
 
