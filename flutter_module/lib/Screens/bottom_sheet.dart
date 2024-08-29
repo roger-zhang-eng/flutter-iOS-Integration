@@ -1,28 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dragDownIndicator.dart';
 import 'navigator_example.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart' as MBS;
-
-class DragDownIndicator extends StatelessWidget {
-  const DragDownIndicator({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          margin: const EdgeInsets.only(top: 8, bottom: 12),
-          width: 45,
-          height: 6,
-          decoration: BoxDecoration(
-            color: Colors.grey[500],
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      ],
-    );
-  }
-}
 
 class MyBottomSheet extends StatefulWidget {
   static const String id = '/MyBottomSheet';

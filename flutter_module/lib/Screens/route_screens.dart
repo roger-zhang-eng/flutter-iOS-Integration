@@ -4,8 +4,11 @@ import 'package:flutter_module/Screens/thirdScreen.dart';
 import 'package:mybatteryplugin/mybatteryplugin.dart';
 import '../Module/route_observer.dart';
 import 'bottom_sheet.dart';
+import 'contentList.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart' as MBS;
 import 'dart:convert';
+
+import 'package:fluttertoast/fluttertoast.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
@@ -75,24 +78,48 @@ class _FirstScreen extends State<FirstScreen> with RouteAware {
             const SizedBox(height: 32.0),
             ElevatedButton(
               onPressed: () {
-                openBottomSheet(context, false);
+                openBottomSheet(context, const MyBottomSheet(), false);
               },
               child: const Text('Modal Bottom Sheet'),
+            ),
+            const SizedBox(height: 32.0),
+            ElevatedButton(
+              onPressed: () {
+                openBottomPermToast();
+                //openBottomSheet(context, const ContentList(), true);
+              },
+              child: const Text('Bottom perm toast'),
             ),
             const SizedBox(height: 32.0),
           ],
         )));
   }
 
-  void openBottomSheet(BuildContext context, bool enableDraggable) {
+  void openBottomSheet(
+      BuildContext context, Widget screen, bool enableDraggable) {
     MBS.showMaterialModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       context: context,
-      builder: (context) => const MyBottomSheet(),
+      builder: (context) => screen,
       enableDrag: enableDraggable,
     );
+  }
+
+  void openBottomPermToast() {
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (BuildContext context) {
+          return Container(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height *
+                  0.9, // Maximum height of the bottom sheet
+            ),
+            child: const ContentList(),
+          );
+        });
   }
 }
 
@@ -117,6 +144,16 @@ class _SecondScreen extends State<SecondScreen> {
   String _updatedText = 'Flutter Second Screen!';
   String _batteryLevel = 'Check Battery - Unknown level.';
   String _authToken = 'dummy-auth-token';
+  late FToast _fToast;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _fToast = FToast();
+    // if you want to use context from globally instead of content we need to pass navigatorKey.currentContext!
+    _fToast.init(context);
+  }
 
   void fetchDataFromNative() async {
     try {
@@ -218,6 +255,16 @@ class _SecondScreen extends State<SecondScreen> {
       ),
     );
 
+    Padding displayToast = Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: () {
+          _showToast();
+        },
+        child: const Text('Display Toast'),
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -233,6 +280,7 @@ class _SecondScreen extends State<SecondScreen> {
             checkBatteryButton,
             backButton,
             checkTokenButton,
+            displayToast,
             widget.isRouted ? padding : pushNextScreenButton,
           ],
         ),
@@ -243,5 +291,43 @@ class _SecondScreen extends State<SecondScreen> {
   void _navigateToNextScreen(BuildContext context) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => ThirdScreen()));
+  }
+
+  _showToast() {
+    Widget toast = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25.0),
+        color: Colors.greenAccent,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.check),
+          SizedBox(
+            width: 12.0,
+          ),
+          Text("This is a Custom Toast"),
+        ],
+      ),
+    );
+
+    _fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: Duration(seconds: 2),
+    );
+
+    // Custom Toast Position
+    _fToast.showToast(
+        child: toast,
+        toastDuration: Duration(seconds: 2),
+        positionedToastBuilder: (context, child) {
+          return Positioned(
+            child: child,
+            top: 16.0,
+            left: 16.0,
+          );
+        });
   }
 }
