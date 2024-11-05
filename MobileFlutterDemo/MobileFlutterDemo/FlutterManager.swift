@@ -46,6 +46,9 @@ final class FlutterManager {
     
     func secondScreen() -> UIViewController {
         //let secondScreenEngine = engines.makeEngine(withEntrypoint: "secondary", libraryURI: nil)
+        
+        flutterEngine.viewController = nil
+        
         let secondVC = FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
 		let methodChannel = FlutterMethodChannel(name: channel, binaryMessenger: flutterEngine.binaryMessenger)
 		
