@@ -33,6 +33,9 @@ dependencies:
   modal_bottom_sheet: ^3.0.0
   fluttertoast: ^8.2.8
 
+  # Firebase
+  #firebase_remote_config: ^4.3.10
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
