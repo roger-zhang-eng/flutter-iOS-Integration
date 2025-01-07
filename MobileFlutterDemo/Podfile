@@ -4,6 +4,43 @@ platform :ios, '14.0'
 flutter_application_path = '../flutter_module'
 load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
 
+def cheq_pods
+  pod 'SwiftKeychainWrapper', '~> 4.0.1'
+  pod 'Hex', '~> 6.1.0'
+  pod 'SVProgressHUD', '~> 2.3.1'
+  pod 'Alamofire', '~> 5.9.0'
+  pod 'PromiseKit', '~> 6.18.1'
+  pod 'DateToolsSwift', '~> 5.0.0'
+  pod 'SearchTextField', '~> 1.2.4'
+  pod 'PullToRefreshKit', '~> 0.8.8'
+  pod 'Kingfisher', '~> 7.10.2'
+  pod 'SVGKit', '~> 3.0.0'
+  pod 'SwiftEntryKit', '~> 2.0.0'
+  pod 'IQKeyboardManagerSwift', '~> 6.5.11'
+  pod 'UITextView+Placeholder', '~> 1.4.0'
+  pod 'MHLoadingButton', '~> 0.1.3'
+  pod 'RxSwift', '~> 6.6'
+  pod 'RxCocoa'
+  pod 'RxOptional'
+  pod 'RxDataSources'
+  pod 'RxKeyboard'
+  pod "RxGesture"
+  pod 'NSObject+Rx'
+  pod 'Intercom', '~> 16.6'
+  pod 'SnapKit', '~> 5.7.1'
+  pod 'TrustKit', '~> 3.0.3'
+  pod 'Device', '~> 3.6'
+  pod 'KDCircularProgress', '~> 1.5.4'
+  pod 'BiometricAuthentication', '~> 3.1.3'
+  pod 'SwiftGen', '~> 6.6.2'
+  pod "VisualEffectView", '~> 4.1.4'
+  pod 'SwiftyAttributes', '~> 5.3.0'
+  pod 'lottie-ios', '~> 4.4.1'
+  pod 'SwiftLint', '~> 0.50.3'
+  pod 'Swinject', '~> 2.8.3'
+  pod 'UIView-Shimmer', '~> 1.0.4'
+end
+
 def moengage_pods
   pod 'MoEngage-iOS-SDK', '~> 9.17.5'
   pod 'MoEngageInApp', '~> 6.0.3'
@@ -22,12 +59,20 @@ def firebase_pods
   pod 'FBSDKCoreKit', '~> 16.3'
 end
 
+def mparticle_pods
+  pod 'mParticle-Google-Analytics-Firebase-GA4', '~> 8.4.0'
+  pod 'mParticle-Apple-SDK', '~> 8.20.0'
+  pod 'mParticle-AppsFlyer'
+end
+
 target 'MobileFlutterDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for MobileFlutterDemo
+  cheq_pods
   firebase_pods
+  mparticle_pods
   moengage_pods
 
   install_all_flutter_pods(flutter_application_path)
