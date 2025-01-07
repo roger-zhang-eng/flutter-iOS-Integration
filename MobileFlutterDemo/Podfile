@@ -28,6 +28,7 @@ target 'MobileFlutterDemo' do
 
   # Pods for MobileFlutterDemo
   firebase_pods
+  moengage_pods
 
   install_all_flutter_pods(flutter_application_path)
 
