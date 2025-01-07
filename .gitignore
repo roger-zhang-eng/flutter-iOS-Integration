@@ -10,7 +10,6 @@ flutter_module/build/
 Build/
 MobileFlutterDemo/DerivedData/
 MobileFlutterDemo/Pods/
-MobileFlutterDemo/Podfile.lock
 
 ## Various settings
 *.pbxuser

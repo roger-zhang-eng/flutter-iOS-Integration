@@ -1,0 +1,21 @@
+[debug] [2025-01-02T23:30:50.612Z] ----------------------------------------------------------------------
+[debug] [2025-01-02T23:30:50.613Z] Command:       /usr/local/bin/firebase /Users/rogerzhang/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase projects:list
+[debug] [2025-01-02T23:30:50.614Z] CLI Version:   13.29.0
+[debug] [2025-01-02T23:30:50.614Z] Platform:      darwin
+[debug] [2025-01-02T23:30:50.614Z] Node Version:  v18.5.0
+[debug] [2025-01-02T23:30:50.619Z] Time:          Fri Jan 03 2025 10:30:50 GMT+1100 (Australian Eastern Daylight Time)
+[debug] [2025-01-02T23:30:50.619Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-02T23:30:50.629Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-02T23:30:50.630Z] > authorizing via signed-in user (roger.zhang.au@gmail.com)
+[debug] [2025-01-02T23:30:50.637Z] Checked if tokens are valid: true, expires at: 1735864180525
+[debug] [2025-01-02T23:30:50.637Z] Checked if tokens are valid: true, expires at: 1735864180525
+[debug] [2025-01-02T23:30:50.639Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2025-01-02T23:31:20.650Z] *** [apiv2] error from fetch(https://firebase.googleapis.com/v1beta1/projects?pageSize=1000, {"headers":{},"method":"GET","signal":{}}): AbortError: The user aborted a request.
+[debug] [2025-01-02T23:31:20.662Z] Timeout reached making request to https://firebase.googleapis.com/v1beta1/projects?pageSize=1000
+[debug] [2025-01-02T23:31:25.688Z] Error: Timed out.
+    at Timeout._onTimeout (/Users/rogerzhang/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/utils.js:269:49)
+    at listOnTimeout (node:internal/timers:564:17)
+    at process.processTimers (node:internal/timers:507:7)
+[error] 
+[error] Error: An unexpected error has occurred.
